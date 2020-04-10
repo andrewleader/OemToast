@@ -26,8 +26,8 @@ namespace XboxToastBackgroundProject
                 await SchedulingHelper.ScheduleTimeTriggerTaskAsync(15);
 
                 // Also show a debug notification so that we know it ran
-                var content = new ToastContentBuilder().AddText("[Debug] PreinstallTask ran").AddText("Xbox toast scheduled for 15 minutes from now").GetToastContent();
-                ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(content.GetXml()) { ExpirationTime = DateTime.Now.AddMinutes(1) });
+                var content = new ToastContentBuilder().AddText("[Debug] PreinstallTask ran").AddText($"Xbox toast scheduled for {DateTime.Now.AddMinutes(15).ToShortTimeString()} (15 minutes from now)").GetToastContent();
+                ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(content.GetXml()) { ExpirationTime = DateTime.Now.AddMinutes(16) });
 #else
                 // Otherwise it gets scheduled for 24 hours from now
                 await SchedulingHelper.ScheduleTimeTriggerTaskAsync();

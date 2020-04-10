@@ -17,12 +17,20 @@ namespace EdgeToastBackgroundProject
             // This task will only run once, after OOBE is completed and user is logged into the desktop.
 
             // Schedule the notification to be shown later (in 5 minutes).
-            ToastHelper.ScheduleNotification();
+            try
+            {
+                ToastHelper.ScheduleNotification();
+            }
+            catch (Exception ex)
+            {
+                var errorContent = new ToastContentBuilder().AddText("[Debug] PreinstallTask exception occurred").AddText(ex.ToString(), hintWrap: true).GetToastContent();
+                ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(errorContent.GetXml()) { ExpirationTime = DateTime.Now.AddMinutes(5) });
+            }
 
 #if DEBUG
             // When compiled in debug, show a notification so that we know it ran
-            var content = new ToastContentBuilder().AddText("[Debug] PreinstallTask ran").AddText("Edge toast scheduled for 5 minutes from now").GetToastContent();
-            ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(content.GetXml()) { ExpirationTime = DateTime.Now.AddMinutes(1) });
+            var content = new ToastContentBuilder().AddText("[Debug] PreinstallTask ran").AddText($"Edge toast scheduled for {DateTime.Now.AddMinutes(5).ToShortTimeString()} (5 minutes from now)").GetToastContent();
+            ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(content.GetXml()) { ExpirationTime = DateTime.Now.AddMinutes(6) });
 #endif
         }
     }
