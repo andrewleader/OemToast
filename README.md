@@ -19,7 +19,8 @@ When the app is compiled for **DEBUG**, it includes a SessionConnected backgroun
 1. Sign out of the computer
 1. Sign back in
 1. [EXPECTED] A debug notification from both apps should appear, stating that the notifications have been scheduled
-1. [EXPECTED] After 5 minutes, notifications from BOTH apps should appear (both Edge and Xbox). The Xbox one, when compiled in debug mode, is set to show the notification after 5 minutes rather than after 24 hours, simply for ease of testing.
+1. [EXPECTED] After 5 minutes, Edge notification should appear.
+1. [EXPECTED] After 15 minutes, Xbox notification should appear. The Xbox notification, when compiled in debug mode, is set to show the notification after 15 minutes rather than after 24 hours, simply for ease of testing.
 
 
 ## Testing with OEM image

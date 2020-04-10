@@ -30,7 +30,7 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="XboxToast.App">
+      EntryPoint="XboxToast.App"> 
       <uap:VisualElements
         DisplayName="Xbox (Beta)"
         Square150x150Logo="Assets\Square150x150Logo.png"
@@ -47,6 +47,11 @@
         <Extension Category="windows.backgroundTasks" EntryPoint="XboxToastBackgroundProject.PreinstallTask">
           <BackgroundTasks>
             <Task Type="systemEvent"/>
+          </BackgroundTasks>
+        </Extension>
+        <Extension Category="windows.backgroundTasks" EntryPoint="XboxToastBackgroundProject.TimeTriggerTask">
+          <BackgroundTasks>
+            <Task Type="timer"/>
           </BackgroundTasks>
         </Extension>
       </Extensions>

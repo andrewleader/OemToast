@@ -19,17 +19,27 @@ namespace XboxToastBackgroundProject
             // Schedule the TimeTrigger task
             var deferral = taskInstance.GetDeferral();
 
+            try
+            {
 #if DEBUG
-            // When in debug, schedule for 5 minutes so we can see it work sooner
-            await SchedulingHelper.ScheduleTimeTriggerTaskAsync(5);
+                // When in debug, schedule for 15 minutes so we can see it work sooner
+                await SchedulingHelper.ScheduleTimeTriggerTaskAsync(15);
 
-            // Also show a debug notification so that we know it ran
-            var content = new ToastContentBuilder().AddText("[Debug] PreinstallTask ran").AddText("Xbox toast scheduled for 5 minutes from now").GetToastContent();
-            ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(content.GetXml()) { ExpirationTime = DateTime.Now.AddMinutes(1) });
+                // Also show a debug notification so that we know it ran
+                var content = new ToastContentBuilder().AddText("[Debug] PreinstallTask ran").AddText("Xbox toast scheduled for 15 minutes from now").GetToastContent();
+                ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(content.GetXml()) { ExpirationTime = DateTime.Now.AddMinutes(1) });
 #else
-            // Otherwise it gets scheduled for 24 hours from now
-            await SchedulingHelper.ScheduleTimeTriggerTaskAsync();
+                // Otherwise it gets scheduled for 24 hours from now
+                await SchedulingHelper.ScheduleTimeTriggerTaskAsync();
 #endif
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                var content = new ToastContentBuilder().AddText("[Debug] PreinstallTask exception occurred").AddText(ex.ToString(), hintWrap: true).GetToastContent();
+                ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(content.GetXml()) { ExpirationTime = DateTime.Now.AddMinutes(5) });
+#endif
+            }
 
             deferral.Complete();
         }
