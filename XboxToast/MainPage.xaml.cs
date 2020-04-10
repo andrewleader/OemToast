@@ -57,5 +57,10 @@ namespace XboxToast
 
             await new MessageDialog("Scheduled!").ShowAsync();
         }
+
+        private void ButtonShowNow_Click(object sender, RoutedEventArgs e)
+        {
+            ToastHelper.ShowToast();
+        }
     }
 }

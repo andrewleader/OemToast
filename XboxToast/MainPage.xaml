@@ -18,6 +18,10 @@
                 x:Name="ButtonSchedule24Hours"
                 Content="Schedule for 24 hours"
                 Click="ButtonSchedule24Hours_Click"/>
+            <Button
+                x:Name="ButtonShowNow"
+                Content="Show now"
+                Click="ButtonShowNow_Click"/>
         </StackPanel>
     </Grid>
 </Page>

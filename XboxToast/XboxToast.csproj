@@ -136,12 +136,35 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Xbox_AppList.scale-100.png" />
+    <Content Include="Assets\Xbox_AppList.scale-100_altform-lightunplated.png" />
+    <Content Include="Assets\Xbox_AppList.scale-100_altform-unplated.png" />
+    <Content Include="Assets\Xbox_AppList.scale-100_contrast-high.png" />
+    <Content Include="Assets\Xbox_AppList.scale-100_contrast-white.png" />
+    <Content Include="Assets\Xbox_AppList.scale-125.png" />
+    <Content Include="Assets\Xbox_AppList.scale-125_altform-lightunplated.png" />
+    <Content Include="Assets\Xbox_AppList.scale-125_altform-unplated.png" />
+    <Content Include="Assets\Xbox_AppList.scale-125_contrast-high.png" />
+    <Content Include="Assets\Xbox_AppList.scale-125_contrast-white.png" />
+    <Content Include="Assets\Xbox_AppList.scale-150.png" />
+    <Content Include="Assets\Xbox_AppList.scale-150_altform-lightunplated.png" />
+    <Content Include="Assets\Xbox_AppList.scale-150_altform-unplated.png" />
+    <Content Include="Assets\Xbox_AppList.scale-150_contrast-high.png" />
+    <Content Include="Assets\Xbox_AppList.scale-150_contrast-white.png" />
+    <Content Include="Assets\Xbox_AppList.scale-200.png" />
+    <Content Include="Assets\Xbox_AppList.scale-200_altform-lightunplated.png" />
+    <Content Include="Assets\Xbox_AppList.scale-200_altform-unplated.png" />
+    <Content Include="Assets\Xbox_AppList.scale-200_contrast-high.png" />
+    <Content Include="Assets\Xbox_AppList.scale-200_contrast-white.png" />
+    <Content Include="Assets\Xbox_AppList.scale-400.png" />
+    <Content Include="Assets\Xbox_AppList.scale-400_altform-lightunplated.png" />
+    <Content Include="Assets\Xbox_AppList.scale-400_altform-unplated.png" />
+    <Content Include="Assets\Xbox_AppList.scale-400_contrast-high.png" />
+    <Content Include="Assets\Xbox_AppList.scale-400_contrast-white.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
