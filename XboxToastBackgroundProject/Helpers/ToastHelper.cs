@@ -11,9 +11,14 @@ namespace XboxToastBackgroundProject.Helpers
     public static class ToastHelper
     {
         /// <summary>
-        /// Idk what the Xbox protocol is for the game pass? Someone needs to fill this in
+        /// Launches the Xbox app to the game pass
         /// </summary>
-        private const string ProtocolUrl = "xbox:";
+        private const string ProtocolUrl = "msgamepass:";
+
+        public static string GetProtocolUrl()
+        {
+            return ProtocolUrl;
+        }
 
         public static void ShowToast()
         {

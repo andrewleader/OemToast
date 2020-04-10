@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -14,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using XboxToastBackgroundProject.Helpers;
 
 namespace XboxToast
 {
@@ -70,6 +72,18 @@ namespace XboxToast
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
+            }
+        }
+
+        protected override async void OnActivated(IActivatedEventArgs args)
+        {
+            // Handle case where user clicked the toast app header within Action Center (rarely happens), launch Game Pass
+            if (args.Kind == ActivationKind.ToastNotification)
+            {
+                Window.Current.Activate();
+
+                await Launcher.LaunchUriAsync(new Uri(ToastHelper.GetProtocolUrl()));
+                Application.Current.Exit();
             }
         }
 

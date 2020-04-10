@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EdgeToastBackgroundProject.Helpers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -83,7 +84,7 @@ namespace EdgeToast
 
                 // This doesn't correctly bring Edge up with focus, but it at least launches Edge.
                 // Alternatively could display a promo page with a "Launch Edge" button, which would correctly work.
-                await Launcher.LaunchUriAsync(new Uri("microsoft-edge:"));
+                await Launcher.LaunchUriAsync(new Uri(ToastHelper.GetProtocolUrl()));
                 Application.Current.Exit();
             }
         }

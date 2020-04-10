@@ -16,6 +16,11 @@ namespace EdgeToastBackgroundProject.Helpers
         /// </summary>
         private const string ProtocolUrl = "microsoft-edge:";
 
+        public static string GetProtocolUrl()
+        {
+            return ProtocolUrl;
+        }
+
         public static XmlDocument GenerateEdgeHeroOceanGifContent()
         {
             return new ToastContent()
