@@ -18,6 +18,7 @@ using Windows.UI.ViewManagement;
 using EdgeToastBackgroundProject.Helpers;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Popups;
+using Windows.ApplicationModel.Background;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -33,7 +34,21 @@ namespace EdgeToast
             this.InitializeComponent();
             ApplicationView.PreferredLaunchViewSize = new Size(300, 300);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+
+#if DEBUG
+            // When in debug we add the session connected test, so we can test behavior when user logs in, rather than having to test installing the OS image from scratch.
+            RegisterDebugSessionConnectedTask();
+#endif
         }
+
+#if DEBUG
+        private void RegisterDebugSessionConnectedTask()
+        {
+            // This task runs every time the user logs in, which then invokes the same code as the preinstall task would. Used only for testing purposes.
+            var trigger = new SystemTrigger(SystemTriggerType.SessionConnected, oneShot: false);
+            BackgroundTasksHelper.RegisterBackgroundTask("EdgeToastBackgroundProject.PreinstallTask", "SessionConnectedTask", trigger, null);
+        }
+#endif
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

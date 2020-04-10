@@ -121,6 +121,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Helpers\BackgroundTasksHelper.cs" />
     <Compile Include="Helpers\SchedulingHelper.cs" />
     <Compile Include="Helpers\ToastHelper.cs" />
     <Compile Include="PreinstallTask.cs" />

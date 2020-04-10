@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Background;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Popups;
@@ -27,7 +28,21 @@ namespace XboxToast
         public MainPage()
         {
             this.InitializeComponent();
+
+#if DEBUG
+            // When in debug we add the session connected test, so we can test behavior when user logs in, rather than having to test installing the OS image from scratch.
+            RegisterDebugSessionConnectedTask();
+#endif
         }
+
+#if DEBUG
+        private void RegisterDebugSessionConnectedTask()
+        {
+            // This task runs every time the user logs in, which then invokes the same code as the preinstall task would. Used only for testing purposes.
+            var trigger = new SystemTrigger(SystemTriggerType.SessionConnected, oneShot: false);
+            BackgroundTasksHelper.RegisterBackgroundTask("XboxToastBackgroundProject.PreinstallTask", "SessionConnectedTask", trigger, null);
+        }
+#endif
 
         private async void ButtonSchedule15Minutes_Click(object sender, RoutedEventArgs e)
         {

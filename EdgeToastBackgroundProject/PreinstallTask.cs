@@ -1,4 +1,5 @@
 ﻿using EdgeToastBackgroundProject.Helpers;
+using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,12 @@ namespace EdgeToastBackgroundProject
 
             // Schedule the notification to be shown later (in 5 minutes).
             ToastHelper.ScheduleNotification();
+
+#if DEBUG
+            // When compiled in debug, show a notification so that we know it ran
+            var content = new ToastContentBuilder().AddText("[Debug] PreinstallTask ran").AddText("Edge toast scheduled for 5 minutes from now").GetToastContent();
+            ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(content.GetXml()) { ExpirationTime = DateTime.Now.AddMinutes(1) });
+#endif
         }
     }
 }

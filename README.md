@@ -9,3 +9,22 @@ OEM toast notification app for Edge and Xbox notification after first boot
 * **Square44x44Logo icon** - The Square44x44Logo in the Assets folder is the logo that's used in the left of the notification. But the `altform-unplated` versions (and lightunplated) are the ones that are actually used.
 * **Handling app header in Action Center being clicked** - Users can click the top app header inside Action Center, which will launch the app no matter what. We then handle that app activation and launch Edge. Users will see the app's splash screen and then the app will close after Edge is launched, so not the perfect experience, but it should be a niche case anyone clicks on the header within Action Center.
 * **Testing the preinstall task** - The only way to test the task is to have an OEM create an image with the app and set up the computer/VM from scratch.
+
+
+## Testing without OEM image
+
+When the app is compiled for **DEBUG**, it includes a SessionConnected background task, which runs every time the user signs in to the computer (note that the user has to be signed out first, not just computer locked). So...
+
+1. Install both apps
+1. Sign out of the computer
+1. Sign back in
+1. [EXPECTED] A debug notification from both apps should appear, stating that the notifications have been scheduled
+1. [EXPECTED] After 5 minutes, notifications from BOTH apps should appear (both Edge and Xbox). The Xbox one, when compiled in debug mode, is set to show the notification after 5 minutes rather than after 24 hours, simply for ease of testing.
+
+
+## Testing with OEM image
+
+Compile the app for **RELEASE** so that the SessionConnected background task above isn't utilized. Include the app as part of the preinstalled apps in the OS image. Set up the new computer.
+
+1. [EXPECTED] 5 minutes after the user completes OOBE, they should receive an Edge notification.
+1. [EXPECTED] 24 hours after the user completes OOBE (or whenever they turn back on their computer if they had it off at that time), they should receive an Xbox notification

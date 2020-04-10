@@ -8,16 +8,18 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="300" Height="300">
 
-    <Grid Width="300" Height="300">
-       
-        <StackPanel Spacing="20" Margin="40">
-            <Button x:Name="SimulatePreinstall" Content="Simulate preinstall task" Click="SimulatePreinstall_Click" HorizontalAlignment="Center"/>
-            <Button Content="Hero Ocean Gif" VerticalAlignment="Top" Click="Button_Click" HorizontalAlignment="Center" />
-            <Button Content="Hero Logo Static" Click="Button_Click_1" HorizontalAlignment="Center" />
+    <Grid>
 
-            <Button Content="Ocean Gif" VerticalAlignment="Top" Click="Button_Std_Click" HorizontalAlignment="Center" />
-            <Button Content="Logo Static" Click="Button_Std_Click_1" HorizontalAlignment="Center" />
-        </StackPanel>
+        <ScrollViewer>
+            <StackPanel Spacing="20" Margin="40">
+                <Button x:Name="SimulatePreinstall" Content="Simulate preinstall task" Click="SimulatePreinstall_Click" HorizontalAlignment="Center"/>
+                <Button Content="Hero Ocean Gif" VerticalAlignment="Top" Click="Button_Click" HorizontalAlignment="Center" />
+                <Button Content="Hero Logo Static" Click="Button_Click_1" HorizontalAlignment="Center" />
+
+                <Button Content="Ocean Gif" VerticalAlignment="Top" Click="Button_Std_Click" HorizontalAlignment="Center" />
+                <Button Content="Logo Static" Click="Button_Std_Click_1" HorizontalAlignment="Center" />
+            </StackPanel>
+        </ScrollViewer>
 
     </Grid>
 </Page>

@@ -53,7 +53,10 @@ namespace XboxToastBackgroundProject.Helpers
                 }
             };
 
-            var notif = new ToastNotification(content.GetXml());
+            var notif = new ToastNotification(content.GetXml())
+            {
+                Tag = "XboxPromotion"
+            };
 
             ToastNotificationManager.CreateToastNotifier().Show(notif);
         }

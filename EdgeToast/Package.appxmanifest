@@ -48,6 +48,12 @@
       </uap:VisualElements>
       <Extensions>
         <Extension Category="windows.preInstalledConfigTask" EntryPoint="EdgeToastBackgroundProject.PreinstallTask"/>
+        <!--This second one is for the debug testing sessionconnected task (upon user login)-->
+        <Extension Category="windows.backgroundTasks" EntryPoint="EdgeToastBackgroundProject.PreinstallTask">
+          <BackgroundTasks>
+            <Task Type="systemEvent"/>
+          </BackgroundTasks>
+        </Extension>
       </Extensions>
     </Application>
   </Applications>

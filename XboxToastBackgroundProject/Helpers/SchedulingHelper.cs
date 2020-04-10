@@ -23,59 +23,16 @@ namespace XboxToastBackgroundProject.Helpers
         {
             await BackgroundExecutionManager.RequestAccessAsync();
 
+            // Remove any existing scheduled time trigger
+            var existing = BackgroundTaskRegistration.AllTasks.FirstOrDefault(i => i.Value.Name == "TimeTriggerNotification").Value;
+            if (existing != null)
+            {
+                existing.Unregister(cancelTask: false);
+            }
+
             TimeTrigger timeTrigger = new TimeTrigger(minutesFromNow, oneShot: true);
             var condition = new SystemCondition(SystemConditionType.UserPresent);
-            RegisterBackgroundTask("TimeTriggerNotification", timeTrigger, condition);
-        }
-
-        //
-        // Register a background task with the specified taskEntryPoint, name, trigger,
-        // and condition (optional).
-        //
-        // taskEntryPoint: Task entry point for the background task.
-        // taskName: A name for the background task.
-        // trigger: The trigger for the background task.
-        // condition: Optional parameter. A conditional event that must be true for the task to fire.
-        //
-        private static BackgroundTaskRegistration RegisterBackgroundTask(string taskName,
-                                                                        IBackgroundTrigger trigger,
-                                                                        IBackgroundCondition condition)
-        {
-            //
-            // Check for existing registrations of this background task.
-            //
-
-            foreach (var cur in BackgroundTaskRegistration.AllTasks)
-            {
-
-                if (cur.Value.Name == taskName)
-                {
-                    //
-                    // The task is already registered.
-                    //
-
-                    return (BackgroundTaskRegistration)(cur.Value);
-                }
-            }
-
-            //
-            // Register the background task.
-            //
-
-            var builder = new BackgroundTaskBuilder();
-
-            builder.Name = taskName;
-            builder.SetTrigger(trigger);
-
-            if (condition != null)
-            {
-
-                builder.AddCondition(condition);
-            }
-
-            BackgroundTaskRegistration task = builder.Register();
-
-            return task;
+            BackgroundTasksHelper.RegisterBackgroundTask("XboxToastBackgroundProject.TimeTriggerTask", "TimeTriggerNotification", timeTrigger, condition);
         }
     }
 }
