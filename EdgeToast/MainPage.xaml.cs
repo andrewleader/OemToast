@@ -88,11 +88,9 @@ namespace EdgeToast
             ToastNotificationManager.CreateToastNotifier().Show(toastNotif);
         }
 
-        private async void SimulatePreinstall_Click(object sender, RoutedEventArgs e)
+        private void SimulatePreinstall_Click(object sender, RoutedEventArgs e)
         {
-            ToastHelper.ScheduleNotification();
-
-            await new MessageDialog("The notification has been scheduled for 5 minutes in the future.").ShowAsync();
+            ToastHelper.ShowToast();
         }
     }
 }

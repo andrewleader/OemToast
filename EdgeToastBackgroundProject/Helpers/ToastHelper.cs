@@ -194,19 +194,19 @@ namespace EdgeToastBackgroundProject.Helpers
             }.GetXml();
         }
 
-        public static void ScheduleNotification()
+        public static void ShowToast()
         {
             // Create the desired toast visual content
             var content = GenerateEdgeHeroOceanGifContent();
 
-            // Create a scheduled notification for 5 minutes from now
-            var notif = new ScheduledToastNotification(content, DateTime.Now.AddMinutes(5))
+            // Create a notification
+            var notif = new ToastNotification(content)
             {
                 Tag = "EdgePromotion"
             };
 
-            // And add it to the schedule
-            ToastNotificationManager.CreateToastNotifier().AddToSchedule(notif);
+            // And show it
+            ToastNotificationManager.CreateToastNotifier().Show(notif);
         }
     }
 }
