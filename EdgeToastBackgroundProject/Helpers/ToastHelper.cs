@@ -27,7 +27,6 @@ namespace EdgeToastBackgroundProject.Helpers
             {
                 Launch = ProtocolUrl,
                 ActivationType = ToastActivationType.Protocol,
-                Scenario = ToastScenario.Reminder,
                 Visual = new ToastVisual()
                 {
                     BindingGeneric = new ToastBindingGeneric()
@@ -70,7 +69,6 @@ namespace EdgeToastBackgroundProject.Helpers
             {
                 Launch = ProtocolUrl,
                 ActivationType = ToastActivationType.Protocol,
-                Scenario = ToastScenario.Reminder,
                 Visual = new ToastVisual()
                 {
                     BindingGeneric = new ToastBindingGeneric()
@@ -114,7 +112,6 @@ namespace EdgeToastBackgroundProject.Helpers
             {
                 Launch = ProtocolUrl,
                 ActivationType = ToastActivationType.Protocol,
-                Scenario = ToastScenario.Reminder,
                 Visual = new ToastVisual()
                 {
                     BindingGeneric = new ToastBindingGeneric()
@@ -157,7 +154,6 @@ namespace EdgeToastBackgroundProject.Helpers
             {
                 Launch = ProtocolUrl,
                 ActivationType = ToastActivationType.Protocol,
-                Scenario = ToastScenario.Reminder,
                 Visual = new ToastVisual()
                 {
                     BindingGeneric = new ToastBindingGeneric()
